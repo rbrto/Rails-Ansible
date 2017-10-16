@@ -1,0 +1,26 @@
+---
+- name: Install Rails Server
+  hosts: app
+  # After initial provisioning, use deploy instead of root and gather_facts yes
+  remote_user: root
+  become: yes
+  gather_facts: no # don't gather facts because /usr/bin/python isn't set
+  pre_tasks:
+    - name: apt-get update
+      raw: apt-get update -qq
+    - name: install python 2.7 and aptitude
+      raw: apt-get install -qq python2.7 aptitude
+    - name: set python 2.7 as default
+      raw: update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+  roles:
+    - common
+    - deploy-user
+    - nginx
+    - postgresql
+    #- certbot
+    - ruby
+    - rails
+    - monit
+    - memcached
+    - redis
+    - elasticsearch

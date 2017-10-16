@@ -1,0 +1,51 @@
+---
+# Server Timzone + Locale
+timezone: America/Santiago
+locale: en_US.UTF-8
+
+# Swap
+# Uncommend here and in /roles/common/tasks/main.yml
+swap_enabled: true
+swap_file_path: /swapfile
+swap_file_size_kb: 1024
+
+# General settings
+deploy_dir: /home/deploy/
+deploy_user: deploy
+deploy_password:
+deploy_app_name: # APP_NAME_HERE
+deploy_server_hostname: # HOST_NAME HERE
+
+# Nginx
+nginx_https_enabled: true
+
+# Certbot
+certbot_url: https://dl.eff.org/certbot-auto
+certbot_dir: /opt/certbot
+certbot_email: # MAIL_HERE
+
+# Authorized Hosts
+# This copies your local public key to the remote machine
+# for passwordless login.
+ssh_public_key_files:
+  - /Users/SET_YOUR_LOCAL_USERNAME_HERE/.ssh/id_rsa.pub
+
+# PostgreSQL
+postgresql_db_name: # SET_DB_NAME
+postgresql_db_user: # SET_DB_USER
+postgresql_db_password: # SET_DB_PASSWORD
+
+# Ruby
+ruby_version: "2.3.1"
+rvm_path: "/usr/local/rvm/gems/ruby-{{ ruby_version }}/bin:/usr/local/rvm/gems/ruby-{{ ruby_version }}@global/bin:/usr/local/rvm/rubies/ruby-{{ ruby_version }}/bin:/usr/local/rvm/bin"
+
+# Rails
+rails_secret_key_base: 653d603c21fb8cf161c567a7adea937379465693b5e9ac442d289dea1a221dac6a8ab01f1a2915372693cc958282bebd9f05c1b7f3a89f1393f87bb019d9489b
+puma_workers: 4
+puma_threads: 4,16
+
+# Elasticsearch
+elasticsearch_version: 2.3.1
+
+# Monit
+monit_sidekiq_enabled: true
