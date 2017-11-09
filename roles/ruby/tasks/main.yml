@@ -1,6 +1,6 @@
 ---
 - name: ensure that GPG key for RVM is installed
-  command: gpg2 --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+  shell: curl -sSL https://rvm.io/mpapis.asc | sudo gpg --import -
   args:
     creates: /root/.gnupg/secring.gpg
 
